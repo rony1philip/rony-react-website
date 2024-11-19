@@ -27,7 +27,6 @@ import {
   CardFooter,
   CardImg,
   CardTitle,
- 
   FormGroup,
   Form,
   Input,
@@ -52,12 +51,18 @@ export default function EmailPage() {
   const [passwordFocus, setPasswordFocus] = React.useState(false);
   function sendEmail(e) {
     e.preventDefault(); //This is important, i'm not sure why, but the email won't send without it
-
+    console.log("bla");
     emailjs
-      .sendForm("SERVICE_ID", "TEMPLATE_ID", e.target, "USER_ID")
+      .sendForm(
+        "service_lxbtdmb",
+        "template_zhk4m58",
+        e.target,
+        "x_3u5IJ5j32bacS9u"
+      )
       .then(
         (result) => {
-          window.location.reload(); //This is if you still want the page to reload (since e.preventDefault() cancelled that behavior)
+          
+          console.log("sucss"); //This is if you still want the page to reload (since e.preventDefault() cancelled that behavior)
         },
         (error) => {
           console.log(error.text);
@@ -114,7 +119,7 @@ export default function EmailPage() {
                     <CardHeader></CardHeader>
                     <CardBody>
                       <h2>Email Me</h2>
-                      <Form className="contact-form">
+                      <Form onSubmit={sendEmail} className="contact-form">
                         <Label>
                           <h4>Full Name</h4>
                         </Label>
@@ -189,21 +194,16 @@ export default function EmailPage() {
                             </InputGroupText>
                           </InputGroupAddon>
 
-                          <Input type="textarea" name="html_message" />
-                        </InputGroup>
+                          <Input type="textarea" name="message" />
+                        </InputGroup>{" "}
+                        <input
+                          className="btn-round"
+                          type="submit"
+                          value="Send"
+                        />
                       </Form>
                     </CardBody>
-                    <CardFooter>
-                      <Button
-                        type="submit"
-                        value="send"
-                        className="btn-round"
-                        color="primary"
-                        size="lg"
-                      >
-                        Send
-                      </Button>
-                    </CardFooter>
+                    <CardFooter></CardFooter>
                   </Card>
                 </Col>
               </Row>

@@ -22667,8 +22667,10 @@ input.datetimepicker[data-color="yellow"]
 }
 
 .card {
+  border-radius: 30%;
   background: #1f2251;
-  border: 0;
+  border-color: purple;
+  border: 2px;
   position: relative;
   width: 100%;
   margin-bottom: 30px;
